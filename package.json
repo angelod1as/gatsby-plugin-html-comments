@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-plugin-html-comments",
+  "description": "Replaces custom tags with HTML comments without React or Gatsby stripping them off. Good for SSI comments and others.",
+  "author": "Angelo Dias <angelo@angelodias.com.br> (https://www.angelodias.com.br)",
+  "version": "1.0.0",
+  "bugs": {
+    "url": "https://github.com/owner/project/issues"
+  },
+  "keywords": [
+    "html",
+    "comments",
+    "ssi",
+    "includes",
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "dependencies": {
+    "replace-in-file": "^4.2.0"
+  }
+}
