@@ -1,4 +1,4 @@
-# HTML Comments
+# Gatsby HTML Comments
 
 When trying to add HTML comments to Gatsby, they get removed or encoded as string.
 
