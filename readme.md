@@ -1,16 +1,16 @@
-# HTML Comments
+# Gatsby HTML Comments
 
 When trying to add HTML comments to Gatsby, they get removed or encoded as string.
 
 This plugin adds comments after Gatsby's build process finishes, replacing specificied custom tags with whatever code the user needs.
 
-*This was created after the need to insert SSI comments inside Gatsby*
+*This was created because of the need to insert SSI comments inside Gatsby*
 
-## How to install
+## Installation
 
 `yarn add gatsby-plugin-html-comments` or `npm install gatsby-plugin-html-comments`
 
-## Usage:
+## Usage
 
 Add the plugin to your `gatsby-config.js` file, preferably at the last, after (almost) every other plugin.
 
@@ -22,25 +22,27 @@ module.exports = {
       files: ['./public/**/*.html', './public/*.html'],
       comment: [
         {
+	  // Replace 'custom-tag'
           regexp: /<custom-tag>(.*?)<\/custom-tag>/g,
-          comment: `<!--comment-->`,
+          // Replace 'comment'
+	  comment: `<!--comment-->`,
           },
       ]
     }
-  }
+  },
 }
 ```
 
-### Options:
+### Options
 
 - **files**: Array of filepaths. The replacer will look on each of these and replace the custom tag with the comment.
 - **comment**: Array of objects.
   - **regexp**: Regular expression with a chosen custom tag. Important: always lowercase and hyphen separated to avoid issues.
   - **comment**: The comment or code you want to insert in the final file.
 
-You can add as many objects as you see fit, depending on how many substitutions you need to make.
+You can add as many comment objects as you see fit, depending on how many substitutions  you need to make.
 
-## Example:
+## Example
 
 ### Without the plugin:
 
@@ -55,7 +57,7 @@ return (
 )
 ```
 
-Result: or the comment gets fuzzy...
+Result: the comment either gets fuzzy...
 
 ```html
 <div>
@@ -68,6 +70,26 @@ or the comment gets removed entirely.
 
 ### With the plugin:
 
+Original code:
+
+```javascript
+return (
+  <div>
+    <keep-this-comment-tag></keep-this-comment-tag>
+    <h1>Hello World</h1>
+  </div>
+)
+```
+
+Result:
+
+```html
+  <div>
+    <!-- keep this comment! -->
+    <h1>Hello World</h1>
+  </div>
+```
+
 Config in `gatsby-config.js`:
 
 ```javascript
@@ -79,34 +101,13 @@ module.exports = {
       comment: [
         {
           regexp: /<keep-this-comment-tag>(.*?)<\/keep-this-comment-tag>/g,
-          comment: `<!-- keep this comment -->`,
+          comment: `<!-- keep this comment! -->`,
           },
       ]
     }
   }
 }
 ```
-
-Original code:
-
-```javascript
-return (
-  <div>
-    <keep-this-comment-tag>
-    <h1>Hello World</h1>
-  </div>
-)
-```
-
-Result:
-
-```html
-  <div>
-    <!-- keep this comment -->
-    <h1>Hello World</h1>
-  </div>
-```
-
 ## Contributions
 
-... [are accepted through Github](https://github.com/angelod1as/gatsby-plugin-html-comments), from improvements on the code itself to making this readme better.
+... [are accepted through Github](https://github.com/angelod1as/gatsby-plugin-html-comments), from improvements on the code itself to making this readme better : )
