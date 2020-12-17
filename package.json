@@ -20,6 +20,6 @@
     "gatsby-plugin"
   ],
   "dependencies": {
-    "replace-in-file": "^4.2.0"
+    "replace-in-file": "^6.1.0"
   }
 }
